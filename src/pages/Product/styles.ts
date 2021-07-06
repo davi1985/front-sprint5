@@ -82,7 +82,7 @@ export const Button = styled.button`
 	color: white;
 	font-size: 1.1rem;
 
-	background: ${({ color }) => (color === 'red' ? colors.red : colors.green)};
+	background: ${( props ) => (props.color === 'red' ? colors.red : colors.green)};
 	transition: filter 0.3s;
 
 	&:hover {
@@ -94,6 +94,7 @@ export const Size = styled.div`
 	display: flex;
 	margin-top: 1rem;
 `;
+
 
 export const Span = styled.span`
 	cursor: pointer;

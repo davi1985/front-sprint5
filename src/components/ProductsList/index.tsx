@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
-import { Product } from '../Product';
+import { Link } from "react-router-dom";
+import { Product, ProductType } from "../Product";
 
-import { Section } from './styles';
+import { Section } from "./styles";
 
-export function ProductsList({ products, productsFiltered }) {
+type ProductsProps = {
+  products: Array<ProductType>;
+  productsFiltered: Array<ProductType>;
+};
+
+export function ProductsList({ products, productsFiltered }: ProductsProps) {
   return (
     <Section className="main__products">
       <ol className="products__list">
@@ -11,8 +16,9 @@ export function ProductsList({ products, productsFiltered }) {
           ? productsFiltered.map((product) => (
             <Link to={`/products/${product.sku}`} key={product.sku}>
               <Product
-                imageUrl={product.image}
-                description={product.name}
+                sku={product.sku}
+                image={product.image}
+                description={product.description}
                 price={product.price}
               />
             </Link>
@@ -20,8 +26,9 @@ export function ProductsList({ products, productsFiltered }) {
           : products.map((product) => (
             <Link to={`/products/${product.sku}`} key={product.sku}>
               <Product
-                imageUrl={product.image}
-                description={product.name}
+                sku={product.sku}
+                image={product.image}
+                description={product.description}
                 price={product.price}
               />
             </Link>

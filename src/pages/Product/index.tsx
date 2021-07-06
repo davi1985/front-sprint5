@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import { useAlert } from '../../hooks/useAlert';
 
@@ -17,12 +17,20 @@ import {
   Span,
 } from './styles';
 
-const sizesModel = [{ size: 4 }, { size: 6 }, { size: 8 }, { size: 10 }];
+import { ProductType } from '../../components/Product';
+
+type SizeType = {
+  size: number
+  selected?: boolean
+}
+
+const sizesModel: Array<SizeType> = [{ size: 4 }, { size: 6 }, { size: 8 }, { size: 10 }];
 
 export function Product() {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState<ProductType>();
 
-  const { id } = useParams();
+  const id = useLocation().pathname.replace(/\D/gim, '');
+
   const { alert } = useAlert();
 
   const history = useHistory();
@@ -30,18 +38,20 @@ export function Product() {
   const [sizes, setSizes] = useState(sizesModel);
   const [size, setSize] = useState(sizes[0].size);
 
-  async function get() {
-    await fetchData(`products?sku=${id}`)
-      .then((response) => setProduct(response[0]))
-      .catch((err) => err);
+  function get() {
+    fetchData(`products?sku=${id}`)
+      .then((response) => {
+        setProduct(response[0])
+      }).catch((err) => err);
   }
 
   useEffect(() => {
     get();
   }, []);
 
-  function handleChangeSize(event) {
-    const sizeChoice = Number(event.target.id);
+  function handleChangeSize(event: Event): void {
+    console.log(event)
+    const sizeChoice = 1
 
     const update = sizes.map((item) => {
       if (item.size === sizeChoice) {
@@ -64,13 +74,13 @@ export function Product() {
     <Container>
       <ImageContainer>
         <img
-          src={`${window.location.origin}/${product.image}`}
-          alt={product.name}
+          src={`${window.location.origin}/${product?.image}`}
+          alt={product?.description}
         />
       </ImageContainer>
 
       <Details>
-        <h2>{product.name}</h2>
+        <h2>{product?.description}</h2>
 
         <Sizes>
           <span>
@@ -82,9 +92,8 @@ export function Product() {
             {sizes.map((item) => (
               <Span
                 key={item.size}
-                id={item.size}
-                className={item?.selected === true ? 'selected' : ''}
-                onClick={handleChangeSize}
+                className={item.selected === true ? 'selected' : ''}
+                onClick={(event) => handleChangeSize}
               >
                 {item.size}
               </Span>
@@ -93,7 +102,7 @@ export function Product() {
         </Sizes>
 
         <Card>
-          <span>{currencyFormatter(product.price)}</span>
+          <span>{currencyFormatter(product?.price)}</span>
 
           <Button color="green" onClick={addCart}>
             Adicionar à sacola

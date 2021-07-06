@@ -1,14 +1,30 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
 import { fetchData } from '../service/ServiceUtils';
 import { useAlert } from '../hooks/useAlert';
 import { useLoading } from '../hooks/useLoading';
+import { ProductType } from '../components/Product';
 
-export const ProductsContext = createContext([]);
 
-export function ProductsProvider({ children }) {
-  const [products, setProducts] = useState([]);
-  const [filters, setFilters] = useState([{}]);
+type Filter = {
+  id: string;
+  label: string;
+}
+
+type ProductsContextData = {
+  products: Array<ProductType>
+  filters: Array<Filter>
+};
+
+type ProductsProviderProps = {
+  children: ReactNode;
+};
+
+export const ProductsContext = createContext<ProductsContextData>({} as ProductsContextData);
+
+export function ProductsProvider({ children }: ProductsProviderProps) {
+  const [products, setProducts] = useState<Array<ProductType>>([]);
+  const [filters, setFilters] = useState<Array<Filter>>([{} as Filter]);
 
   const { alert } = useAlert();
   const { addRequest, removeRequest } = useLoading();
