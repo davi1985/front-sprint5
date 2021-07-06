@@ -23,7 +23,7 @@ describe('BreadcrumbItem component', () => {
     const active = 'true';
 
     const { container } = render(
-      <BreadcrumbItem link={link} label={label} active={active} />
+      <BreadcrumbItem link={link} label={label} active={active} />,
     );
 
     expect(container.firstChild).toHaveClass('breadcrumbs__item--active');

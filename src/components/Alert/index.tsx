@@ -1,4 +1,4 @@
-import { Content } from "./styles";
+import { Content } from './styles';
 
 type AlertProps = {
   alertText: string;
@@ -6,5 +6,5 @@ type AlertProps = {
 };
 
 export function Alert({ alertText, type }: AlertProps) {
-  return <Content className={type ? "success" : ""}>{alertText}</Content>;
+  return <Content className={type ? 'success' : ''}>{alertText}</Content>;
 }

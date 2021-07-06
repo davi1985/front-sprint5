@@ -6,9 +6,9 @@ import { render } from '@testing-library/react';
 import { Footer } from '.';
 
 describe('Filters component', () => {
-	it('should render correctly', () => {
-		const { container } = render(<Footer />);
+  it('should render correctly', () => {
+    const { container } = render(<Footer />);
 
-		expect(container.firstChild).toHaveClass('footer');
-	});
+    expect(container.firstChild).toHaveClass('footer');
+  });
 });

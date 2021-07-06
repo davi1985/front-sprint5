@@ -5,22 +5,23 @@ import { useAlert } from '../hooks/useAlert';
 import { useLoading } from '../hooks/useLoading';
 import { ProductType } from '../components/Product';
 
-
 type Filter = {
   id: string;
   label: string;
-}
+};
 
 type ProductsContextData = {
-  products: Array<ProductType>
-  filters: Array<Filter>
+  products: Array<ProductType>;
+  filters: Array<Filter>;
 };
 
 type ProductsProviderProps = {
   children: ReactNode;
 };
 
-export const ProductsContext = createContext<ProductsContextData>({} as ProductsContextData);
+export const ProductsContext = createContext<ProductsContextData>(
+  {} as ProductsContextData,
+);
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
   const [products, setProducts] = useState<Array<ProductType>>([]);
@@ -54,6 +55,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
   }
   useEffect(() => {
     get();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

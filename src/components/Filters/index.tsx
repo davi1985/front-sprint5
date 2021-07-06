@@ -1,6 +1,5 @@
-import { FilterItem } from "../FilterItem";
-
-import { Container, List } from "./styles";
+import { FilterItem } from '../FilterItem';
+import { Container, List } from './styles';
 
 type Filter = {
   id: string;

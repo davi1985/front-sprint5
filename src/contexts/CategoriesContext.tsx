@@ -1,8 +1,8 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
-import { fetchData } from "../service/ServiceUtils";
-import { useAlert } from "../hooks/useAlert";
-import { useLoading } from "../hooks/useLoading";
+import { fetchData } from '../service/ServiceUtils';
+import { useAlert } from '../hooks/useAlert';
+import { useLoading } from '../hooks/useLoading';
 
 type CategoriesProviderProps = {
   children: ReactNode;
@@ -42,12 +42,12 @@ export function CategoriesProvider({ children }: CategoriesProviderProps) {
   async function get(): Promise<void> {
     addRequest();
 
-    await fetchData("categories")
+    await fetchData('categories')
       .then((response: any) => {
         const menu = response.slice(0, response.length - 1);
         const prevBreadcrumbs = response.slice(
           response.length - 1,
-          response.length
+          response.length,
         );
 
         setMenuItems(menu);
@@ -56,7 +56,7 @@ export function CategoriesProvider({ children }: CategoriesProviderProps) {
         removeRequest();
       })
       .catch(() => {
-        alert("Erro ao carregar as categorias!", false);
+        alert('Erro ao carregar as categorias!', false);
 
         removeRequest();
       });
@@ -64,6 +64,7 @@ export function CategoriesProvider({ children }: CategoriesProviderProps) {
 
   useEffect(() => {
     get();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

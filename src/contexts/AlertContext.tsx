@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState } from 'react';
 
 type AlertProviderProps = {
   children: ReactNode;
@@ -11,18 +11,18 @@ type AlertContextData = {
 };
 
 export const AlertContext = createContext<AlertContextData>(
-  {} as AlertContextData
+  {} as AlertContextData,
 );
 
 export function AlertProvider({ children }: AlertProviderProps) {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [success, setSuccess] = useState(false);
 
   function alert(messageAlert: string, successType: boolean): void {
     setMessage(messageAlert);
     setSuccess(successType);
 
-    setTimeout(() => setMessage(""), 4000);
+    setTimeout(() => setMessage(''), 4000);
   }
   return (
     <AlertContext.Provider value={{ message, success, alert }}>

@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import MoonLoader from 'react-spinners/MoonLoader';
+
 import { Alert } from '../../components/Alert';
 import { Filters } from '../../components/Filters';
 import { ProductsList } from '../../components/ProductsList';
@@ -7,7 +8,6 @@ import { useAlert } from '../../hooks/useAlert';
 import { useFilter } from '../../hooks/useFilter';
 import { useLoading } from '../../hooks/useLoading';
 import { useProducts } from '../../hooks/useProducts';
-
 import { Main } from './styles';
 
 const override = css`

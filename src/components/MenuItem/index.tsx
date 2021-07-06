@@ -1,4 +1,4 @@
-import { Item } from "./styles";
+import { Item } from './styles';
 
 type MenuItemProps = {
   label: string;

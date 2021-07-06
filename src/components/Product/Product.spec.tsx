@@ -12,7 +12,7 @@ describe('MenuItem component', () => {
     const price = '100.00';
 
     render(
-      <Product imageUrl={imageUrl} description={description} price={price} />
+      <Product imageUrl={imageUrl} description={description} price={price} />,
     );
 
     expect(screen.getByText('Example description')).toBeInTheDocument();

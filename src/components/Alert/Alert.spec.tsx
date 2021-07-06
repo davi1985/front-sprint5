@@ -1,18 +1,17 @@
 /* globals describe, expect, it */
+import '@testing-library/jest-dom/extend-expect';
 
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen } from '@testing-library/react';
 
-import { render, screen } from "@testing-library/react";
+import { Alert } from '.';
 
-import { Alert } from ".";
-
-describe("Alert component", () => {
-  it("should render correctly", () => {
-    const alertText = "Text example";
-    const type = "success";
+describe('Alert component', () => {
+  it('should render correctly', () => {
+    const alertText = 'Text example';
+    const type = 'success';
 
     render(<Alert alertText={alertText} type={type} />);
 
-    expect(screen.getByText("Text example")).toBeInTheDocument();
+    expect(screen.getByText('Text example')).toBeInTheDocument();
   });
 });

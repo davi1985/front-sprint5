@@ -6,12 +6,12 @@ import { render, screen } from '@testing-library/react';
 import { MenuItem } from '.';
 
 describe('MenuItem component', () => {
-	it('should render correctly', () => {
-		const label = 'Item';
-		const link = 'http://example.com';
+  it('should render correctly', () => {
+    const label = 'Item';
+    const link = 'http://example.com';
 
-		render(<MenuItem label={label} link={link} />);
+    render(<MenuItem label={label} link={link} />);
 
-		expect(screen.getByText('Item')).toBeInTheDocument();
-	});
+    expect(screen.getByText('Item')).toBeInTheDocument();
+  });
 });

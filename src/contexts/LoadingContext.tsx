@@ -1,16 +1,18 @@
 import { createContext, ReactNode, useState } from 'react';
 
 type LoadingContextData = {
-  addRequest: () => void
-  removeRequest: () => void
-  loading: boolean
+  addRequest: () => void;
+  removeRequest: () => void;
+  loading: boolean;
 };
 
 type LoadingProviderProps = {
   children: ReactNode;
 };
 
-export const LoadingContext = createContext<LoadingContextData>({} as LoadingContextData);
+export const LoadingContext = createContext<LoadingContextData>(
+  {} as LoadingContextData,
+);
 
 export function LoadingProvider({ children }: LoadingProviderProps) {
   const [loading, setLoading] = useState<boolean>(false);

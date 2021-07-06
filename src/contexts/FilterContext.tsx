@@ -1,18 +1,21 @@
 import { createContext, ReactNode, useState } from 'react';
+
 import { ProductType } from '../components/Product';
 import { useProducts } from '../hooks/useProducts';
 
 type FilterContextData = {
-  searchProduct: string
-  setSeachProduct: (string: string) => void
-  productsFiltered: Array<ProductType>
+  searchProduct: string;
+  setSeachProduct: (string: string) => void;
+  productsFiltered: Array<ProductType>;
 };
 
 type FilterProviderProps = {
   children: ReactNode;
 };
 
-export const FilterContext = createContext<FilterContextData>({} as FilterContextData);
+export const FilterContext = createContext<FilterContextData>(
+  {} as FilterContextData,
+);
 
 export function FilterProvider({ children }: FilterProviderProps) {
   const [searchProduct, setSeachProduct] = useState('');
@@ -21,7 +24,7 @@ export function FilterProvider({ children }: FilterProviderProps) {
   const productsFiltered = products.filter((item: ProductType) => {
     if (searchProduct === '') return false;
 
-    const description = item.description.toUpperCase();
+    const description = item.name.toUpperCase();
     const search = searchProduct.toUpperCase();
 
     return description.includes(search);

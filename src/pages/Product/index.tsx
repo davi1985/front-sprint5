@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
+
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import { useAlert } from '../../hooks/useAlert';
-
 import { currencyFormatter } from '../../utils/currencyFormatter';
 import { fetchData } from '../../service/ServiceUtils';
-
 import {
   Card,
   Container,
@@ -16,15 +15,19 @@ import {
   ImageContainer,
   Span,
 } from './styles';
-
 import { ProductType } from '../../components/Product';
 
 type SizeType = {
-  size: number
-  selected?: boolean
-}
+  size: number;
+  selected?: boolean;
+};
 
-const sizesModel: Array<SizeType> = [{ size: 4 }, { size: 6 }, { size: 8 }, { size: 10 }];
+const sizesModel: Array<SizeType> = [
+  { size: 4 },
+  { size: 6 },
+  { size: 8 },
+  { size: 10 },
+];
 
 export function Product() {
   const [product, setProduct] = useState<ProductType>();
@@ -41,17 +44,19 @@ export function Product() {
   function get() {
     fetchData(`products?sku=${id}`)
       .then((response) => {
-        setProduct(response[0])
-      }).catch((err) => err);
+        setProduct(response[0]);
+      })
+      .catch((err) => err);
   }
 
   useEffect(() => {
     get();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleChangeSize(event: Event): void {
-    console.log(event)
-    const sizeChoice = 1
+    console.log(event);
+    const sizeChoice = 1;
 
     const update = sizes.map((item) => {
       if (item.size === sizeChoice) {
@@ -75,12 +80,12 @@ export function Product() {
       <ImageContainer>
         <img
           src={`${window.location.origin}/${product?.image}`}
-          alt={product?.description}
+          alt={product?.name}
         />
       </ImageContainer>
 
       <Details>
-        <h2>{product?.description}</h2>
+        <h2>{product?.name}</h2>
 
         <Sizes>
           <span>

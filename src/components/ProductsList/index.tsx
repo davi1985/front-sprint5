@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
-import { Product, ProductType } from "../Product";
+/* eslint-disable prettier/prettier */
+import { Link } from 'react-router-dom';
 
-import { Section } from "./styles";
+import { Product, ProductType } from '../Product';
+import { Section } from './styles';
 
 type ProductsProps = {
   products: Array<ProductType>;
@@ -9,6 +10,7 @@ type ProductsProps = {
 };
 
 export function ProductsList({ products, productsFiltered }: ProductsProps) {
+  console.log(products)
   return (
     <Section className="main__products">
       <ol className="products__list">
@@ -18,17 +20,18 @@ export function ProductsList({ products, productsFiltered }: ProductsProps) {
               <Product
                 sku={product.sku}
                 image={product.image}
-                description={product.description}
+                name={product.name}
                 price={product.price}
               />
             </Link>
           ))
-          : products.map((product) => (
+          : // eslint-disable-next-line radar/no-identical-functions
+          products.map((product) => (
             <Link to={`/products/${product.sku}`} key={product.sku}>
               <Product
                 sku={product.sku}
                 image={product.image}
-                description={product.description}
+                name={product.name}
                 price={product.price}
               />
             </Link>

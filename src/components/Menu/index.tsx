@@ -1,5 +1,5 @@
-import { MenuItem } from "../MenuItem";
-import { List, Nav } from "./styles";
+import { MenuItem } from '../MenuItem';
+import { List, Nav } from './styles';
 
 type MenuItemType = {
   id: number;

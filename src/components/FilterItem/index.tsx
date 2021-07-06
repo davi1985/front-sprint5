@@ -1,6 +1,5 @@
-import filterIcon from "../../assets/icons/filter.svg";
-
-import { Item } from "./styles";
+import filterIcon from '../../assets/icons/filter.svg';
+import { Item } from './styles';
 
 type FilterItemProps = {
   label: string;

@@ -1,14 +1,11 @@
 import { Menu } from '../Menu';
 import { Mobile } from '../Mobile';
 import { Breadcrumbs } from '../Breadcrumbs';
-
 import riachueloIcon from '../../assets/icons/riachuelo.svg';
 import searchIcon from '../../assets/icons/search.svg';
-
 import { Alert } from '../Alert';
 import { useAlert } from '../../hooks/useAlert';
 import { useFilter } from '../../hooks/useFilter';
-
 import { Container } from './styles';
 import { useCategories } from '../../hooks/useCategories';
 

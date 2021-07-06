@@ -12,7 +12,7 @@ import {
   PaymentSocial,
   SocialIcons,
   SocialIconsContent,
-} from "./styles";
+} from './styles';
 
 export function Footer() {
   return (

@@ -19,12 +19,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "server": "json-server src/db.json -w -d 750 -p 3333",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:fix": "eslint . --fix"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "@lukemorales"
     ]
   },
   "browserslist": {
@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@lukemorales/eslint-config": "1.0.16",
     "@testing-library/dom": "^8.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -48,8 +49,28 @@
     "@types/react-dom": "^17.0.8",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.11",
+    "@typescript-eslint/eslint-plugin": "4.15.2",
+    "@typescript-eslint/parser": "4.15.2",
+    "eslint": "7.21.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-import-resolver-typescript": "2.4.0",
+    "eslint-plugin-10x": "1.5.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-import-helpers": "1.1.0",
+    "eslint-plugin-jest": "24.1.5",
+    "eslint-plugin-jest-dom": "3.6.5",
+    "eslint-plugin-jest-formatting": "2.0.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-radar": "0.2.1",
+    "eslint-plugin-react": "7.22.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-plugin-react-redux": "3.3.2",
+    "eslint-plugin-testing-library": "3.10.1",
     "jest-dom": "^4.0.0",
     "json-server": "^0.16.3",
+    "prettier": "2.2.1",
     "typescript": "^4.3.5"
   }
 }
