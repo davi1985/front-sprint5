@@ -13,8 +13,7 @@ export function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
           {breadcrumbs &&
             breadcrumbs.map((item, index) => (
               <BreadcrumbItem
-                id={index}
-                key={item.label}
+                key={item.id}
                 label={item.label}
                 link={item.link}
                 active={breadcrumbs.length - 1 === index}

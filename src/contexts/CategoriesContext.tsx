@@ -1,8 +1,8 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
-import { fetchData } from '../service/ServiceUtils';
 import { useAlert } from '../hooks/useAlert';
 import { useLoading } from '../hooks/useLoading';
+import { fetchData } from '../service/ServiceUtils';
 
 type CategoriesProviderProps = {
   children: ReactNode;
@@ -43,16 +43,15 @@ export function CategoriesProvider({ children }: CategoriesProviderProps) {
     addRequest();
 
     await fetchData('categories')
-      .then((response: any) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .then((response: any): void => {
         const menu = response.slice(0, response.length - 1);
         const prevBreadcrumbs = response.slice(
           response.length - 1,
           response.length,
         );
-
         setMenuItems(menu);
         setBreadcrumbs(prevBreadcrumbs[0].current);
-
         removeRequest();
       })
       .catch(() => {

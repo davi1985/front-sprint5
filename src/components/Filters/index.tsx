@@ -10,13 +10,13 @@ type FiltersProps = {
   filters: Array<Filter>;
 };
 
-export function Filters({ filters }: FiltersProps) {
+export function Filters({ filters }: FiltersProps): JSX.Element {
   return (
     <Container className="main__filters">
       <List>
         {filters &&
           filters.map((filter) => (
-            <FilterItem key={filter.id} label={filter.label} />
+            <FilterItem key={filter.id} label={filter.label} id={filter.id} />
           ))}
       </List>
     </Container>

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
 import { fetchData } from '../service/ServiceUtils';
@@ -13,6 +14,8 @@ type Filter = {
 type ProductsContextData = {
   products: Array<ProductType>;
   filters: Array<Filter>;
+  handleSortByName: () => void;
+  handleSortByPrice: () => void;
 };
 
 type ProductsProviderProps = {
@@ -34,7 +37,8 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
     addRequest();
 
     await fetchData('products')
-      .then((response) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .then((response: any) => {
         const prevProducts = response.slice(0, response.length - 1);
         const prevFilters = response.slice(
           response.length - 1,
@@ -53,13 +57,41 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
         removeRequest();
       });
   }
+
+  function handleSortByName() {
+    const sortedProducts = [...products];
+
+    sortedProducts.sort((actual, next) =>
+      // eslint-disable-next-line no-nested-ternary
+      actual.name > next.name ? 1 : next.name > actual.name ? -1 : 0,
+    );
+    setProducts(sortedProducts);
+  }
+
+  function handleSortByPrice() {
+    const sortedProducts = [...products];
+    sortedProducts.sort((actual, next) =>
+      // eslint-disable-next-line no-nested-ternary
+      parseFloat(actual.price) > parseFloat(next.price)
+        ? 1
+        : parseFloat(next.price) > parseFloat(actual.price)
+          ? -1
+          : 0,
+    );
+
+    setProducts(sortedProducts)
+  }
+
   useEffect(() => {
     get();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
+
+
   return (
-    <ProductsContext.Provider value={{ products, filters }}>
+    <ProductsContext.Provider value={{ products, filters, handleSortByName, handleSortByPrice }}>
       {children}
     </ProductsContext.Provider>
   );

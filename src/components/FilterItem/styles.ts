@@ -20,5 +20,12 @@ export const Item = styled.li`
   img {
     height: 20px;
     margin-left: 8px;
+    transition: all 0.3s;
+    transform: rotate(-180deg);
+    transition: all 0.3s;
+
+    &.active {
+      transform: rotate(0deg);
+    }
   }
 `;

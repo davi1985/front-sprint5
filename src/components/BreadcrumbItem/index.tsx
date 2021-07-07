@@ -1,7 +1,7 @@
 import { Item } from './styles';
 
 export type Breadcrumb = {
-  id: number;
+  id?: number;
   label: string;
   link: string;
   active: boolean;

@@ -10,7 +10,6 @@ type ProductsProps = {
 };
 
 export function ProductsList({ products, productsFiltered }: ProductsProps) {
-  console.log(products)
   return (
     <Section className="main__products">
       <ol className="products__list">

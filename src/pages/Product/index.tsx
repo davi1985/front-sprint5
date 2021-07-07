@@ -43,7 +43,8 @@ export function Product() {
 
   function get() {
     fetchData(`products?sku=${id}`)
-      .then((response) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .then((response: any) => {
         setProduct(response[0]);
       })
       .catch((err) => err);
@@ -54,9 +55,9 @@ export function Product() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function handleChangeSize(event: Event): void {
-    console.log(event);
-    const sizeChoice = 1;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function handleChangeSize(event: any) {
+    const sizeChoice = Number(event.target.innerHTML);
 
     const update = sizes.map((item) => {
       if (item.size === sizeChoice) {
@@ -98,7 +99,7 @@ export function Product() {
               <Span
                 key={item.size}
                 className={item.selected === true ? 'selected' : ''}
-                onClick={(event) => handleChangeSize}
+                onClick={handleChangeSize}
               >
                 {item.size}
               </Span>

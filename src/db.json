@@ -160,6 +160,14 @@
     {
       "filters": [
         {
+          "id": "name",
+          "label": "Nome"
+        },
+        {
+          "id": "price",
+          "label": "Preço"
+        },
+        {
           "id": "size",
           "label": "Tamanho"
         },
