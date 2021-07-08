@@ -17,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --watchAll=false --coverage",
     "server": "json-server src/db.json -w -d 750 -p 3333",
     "eject": "react-scripts eject",
     "lint:fix": "eslint . --fix"
