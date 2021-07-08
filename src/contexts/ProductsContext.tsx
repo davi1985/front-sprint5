@@ -8,8 +8,6 @@ import { ProductsContextData, ProductsProviderProps } from '../@types/contexts/P
 import { ProductType } from '../@types/components/Product';
 import { Filter } from '../@types/components/Filter';
 
-
-
 export const ProductsContext = createContext<ProductsContextData>(
   {} as ProductsContextData,
 );

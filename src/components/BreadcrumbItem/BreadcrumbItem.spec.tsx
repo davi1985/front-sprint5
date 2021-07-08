@@ -1,5 +1,3 @@
-/* globals describe, expect, it */
-
 import '@testing-library/jest-dom/extend-expect';
 
 import { render, screen } from '@testing-library/react';
@@ -10,7 +8,7 @@ describe('BreadcrumbItem component', () => {
   it('should render correctly', () => {
     const link = 'http://example.com';
     const label = 'Home';
-    const active = 'true';
+    const active = true;
 
     render(<BreadcrumbItem link={link} label={label} active={active} />);
 
@@ -20,7 +18,7 @@ describe('BreadcrumbItem component', () => {
   it('should receive classname correctly', () => {
     const link = 'http://example.com';
     const label = 'Home';
-    const active = 'true';
+    const active = true;
 
     const { container } = render(
       <BreadcrumbItem link={link} label={label} active={active} />,

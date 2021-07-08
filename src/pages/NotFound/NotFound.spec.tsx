@@ -1,4 +1,3 @@
-/* globals describe, expect, it */
 import '@testing-library/jest-dom/extend-expect';
 
 import { render, screen } from '@testing-library/react';
