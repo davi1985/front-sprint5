@@ -11,6 +11,7 @@ type FilterItemProps = {
 
 export function FilterItem({ label, id }: FilterItemProps) {
   const [active, setActive] = useState(false);
+
   const {
     handleSortByName,
     handleSortByPrice,

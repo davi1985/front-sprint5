@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 
 import { Breadcrumb } from '../@types/components/Breadcrumb';
-import { MenuItemType, MenuType } from '../@types/components/Menu';
+import { MenuItemType } from '../@types/components/Menu';
 import {
   CategoriesContextData,
   CategoriesProviderProps,

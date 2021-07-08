@@ -55,8 +55,8 @@ export function Product(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function handleChangeSize(event: any) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function handleChangeSize(event: any): void {
     const sizeChoice = Number(event.target.innerHTML);
 
     const update = sizes.map((item) => {
