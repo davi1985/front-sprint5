@@ -15,7 +15,7 @@ import {
   ImageContainer,
   Span,
 } from './styles';
-import { ProductType } from '../../components/Product';
+import { ProductType } from '../../@types/components/Product';
 
 type SizeType = {
   size: number;
@@ -29,7 +29,7 @@ const sizesModel: Array<SizeType> = [
   { size: 10 },
 ];
 
-export function Product() {
+export function Product(): JSX.Element {
   const [product, setProduct] = useState<ProductType>();
 
   const id = useLocation().pathname.replace(/\D/gim, '');
@@ -41,8 +41,8 @@ export function Product() {
   const [sizes, setSizes] = useState(sizesModel);
   const [size, setSize] = useState(sizes[0].size);
 
-  function get() {
-    fetchData(`products?sku=${id}`)
+  async function get() {
+    await fetchData(`products?sku=${id}`)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((response: any) => {
         setProduct(response[0]);

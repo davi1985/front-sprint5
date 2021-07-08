@@ -1,39 +1,27 @@
 /* eslint-disable prettier/prettier */
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import { fetchData } from '../service/ServiceUtils';
 import { useAlert } from '../hooks/useAlert';
 import { useLoading } from '../hooks/useLoading';
-import { ProductType } from '../components/Product';
+import { ProductsContextData, ProductsProviderProps } from '../@types/contexts/ProductsContext';
+import { ProductType } from '../@types/components/Product';
+import { Filter } from '../@types/components/Filter';
 
-type Filter = {
-  id: string;
-  label: string;
-};
 
-type ProductsContextData = {
-  products: Array<ProductType>;
-  filters: Array<Filter>;
-  handleSortByName: () => void;
-  handleSortByPrice: () => void;
-};
-
-type ProductsProviderProps = {
-  children: ReactNode;
-};
 
 export const ProductsContext = createContext<ProductsContextData>(
   {} as ProductsContextData,
 );
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
-  const [products, setProducts] = useState<Array<ProductType>>([]);
-  const [filters, setFilters] = useState<Array<Filter>>([{} as Filter]);
+  const [products, setProducts] = useState<ProductType[]>([]);
+  const [filters, setFilters] = useState<Filter[]>([{} as Filter]);
 
   const { alert } = useAlert();
   const { addRequest, removeRequest } = useLoading();
 
-  async function get() {
+  async function get(): Promise<void> {
     addRequest();
 
     await fetchData('products')
@@ -58,26 +46,40 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
       });
   }
 
-  function handleSortByName() {
+  function handleSortByName(): void {
     const sortedProducts = [...products];
 
     sortedProducts.sort((actual, next) =>
       // eslint-disable-next-line no-nested-ternary
       actual.name > next.name ? 1 : next.name > actual.name ? -1 : 0,
     );
+
     setProducts(sortedProducts);
   }
 
-  function handleSortByPrice() {
+  function handleSortByPrice(): void {
     const sortedProducts = [...products];
-    sortedProducts.sort((actual, next) =>
+
+    sortedProducts.sort((actual, next) => {
+      const actualPrice = parseFloat(actual.price);
+      const nextPrice = parseFloat(next.price)
       // eslint-disable-next-line no-nested-ternary
-      parseFloat(actual.price) > parseFloat(next.price)
-        ? 1
-        : parseFloat(next.price) > parseFloat(actual.price)
-          ? -1
-          : 0,
-    );
+      return actualPrice > nextPrice ? 1 : nextPrice > actualPrice ? -1 : 0
+    });
+
+    setProducts(sortedProducts)
+  }
+
+  function handleSortBySize(): void {
+    const sortedProducts = [...products]
+
+    sortedProducts.sort((actual, next) => {
+      const sizeActual = Number(actual.name.match(/\d+/))
+      const sizeNext = Number(next.name.match(/\d+/))
+
+      // eslint-disable-next-line no-nested-ternary
+      return sizeActual > sizeNext ? 1 : sizeNext > sizeActual ? -1 : 0
+    })
 
     setProducts(sortedProducts)
   }
@@ -87,11 +89,8 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
-
-
   return (
-    <ProductsContext.Provider value={{ products, filters, handleSortByName, handleSortByPrice }}>
+    <ProductsContext.Provider value={{ products, filters, handleSortByName, handleSortByPrice, handleSortBySize }}>
       {children}
     </ProductsContext.Provider>
   );

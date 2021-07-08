@@ -1,4 +1,5 @@
-import { Breadcrumb, BreadcrumbItem } from '../BreadcrumbItem';
+import { Breadcrumb } from '../../@types/components/Breadcrumb';
+import { BreadcrumbItem } from '../BreadcrumbItem';
 import { Container } from './styles';
 
 type BreadcrumbsProps = {

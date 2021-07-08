@@ -1,14 +1,8 @@
+import { ProductType } from '../../@types/components/Product';
 import { currencyFormatter } from '../../utils/currencyFormatter';
 import { Card, Container } from './styles';
 
-export type ProductType = {
-  sku: string;
-  image: string;
-  name: string;
-  price: string;
-};
-
-export function Product({ image, name, price }: ProductType) {
+export function Product({ image, name, price }: ProductType): JSX.Element {
   return (
     <Container>
       <Card>

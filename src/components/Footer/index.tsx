@@ -14,7 +14,7 @@ import {
   SocialIconsContent,
 } from './styles';
 
-export function Footer() {
+export function Footer(): JSX.Element {
   return (
     <Container className="footer">
       <section className="footer__contact">

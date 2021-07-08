@@ -15,7 +15,7 @@ type SpinnerProps = {
   loading: boolean;
 };
 
-export function Spinner({ loading }: SpinnerProps) {
+export function Spinner({ loading }: SpinnerProps): JSX.Element {
   return (
     <MoonLoader
       css={override}

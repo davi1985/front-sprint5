@@ -1,21 +1,15 @@
+import { MenuItemType } from '../../@types/components/Menu';
 import { MenuItem } from '../MenuItem';
 import { List, Nav } from './styles';
 
-type MenuItemType = {
-  id: number;
-  label: string;
-  link: string;
-};
-
 type MenuProps = {
-  menuItems: Array<MenuItemType>;
+  menuItems: MenuItemType[];
 };
-
-export function Menu({ menuItems }: MenuProps) {
+export function Menu({ menuItems }: MenuProps): JSX.Element {
   return (
     <Nav className="header__menu menu">
       <List className="menu__list">
-        {menuItems.map((item) => (
+        {menuItems.map((item: MenuItemType) => (
           <MenuItem label={item.label} link={item.link} key={item.id} />
         ))}
       </List>

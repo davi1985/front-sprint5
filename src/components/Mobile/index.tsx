@@ -6,7 +6,7 @@ import menuIcon from '../../assets/icons/menu.svg';
 import closeIcon from '../../assets/icons/close.svg';
 import rchloIcon from '../../assets/icons/rchlo.svg';
 
-export function Mobile() {
+export function Mobile(): JSX.Element {
   const [mobileMenuOpened, setMobileMenuOpened] = useState(false);
 
   return (

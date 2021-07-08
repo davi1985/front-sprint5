@@ -1,14 +1,9 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, useState } from 'react';
 
-type LoadingContextData = {
-  addRequest: () => void;
-  removeRequest: () => void;
-  loading: boolean;
-};
-
-type LoadingProviderProps = {
-  children: ReactNode;
-};
+import {
+  LoadingContextData,
+  LoadingProviderProps,
+} from '../@types/contexts/LoadingContext';
 
 export const LoadingContext = createContext<LoadingContextData>(
   {} as LoadingContextData,

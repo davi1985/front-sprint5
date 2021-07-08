@@ -1,20 +1,21 @@
 /* eslint-disable prettier/prettier */
 import { Link } from 'react-router-dom';
 
-import { Product, ProductType } from '../Product';
+import { ProductType } from '../../@types/components/Product';
+import { Product } from '../Product';
 import { Section } from './styles';
 
 type ProductsProps = {
-  products: Array<ProductType>;
-  productsFiltered: Array<ProductType>;
+  products: ProductType[];
+  productsFiltered: ProductType[];
 };
 
-export function ProductsList({ products, productsFiltered }: ProductsProps) {
+export function ProductsList({ products, productsFiltered }: ProductsProps): JSX.Element {
   return (
     <Section className="main__products">
       <ol className="products__list">
         {productsFiltered.length > 0
-          ? productsFiltered.map((product) => (
+          ? productsFiltered.map((product: ProductType) => (
             <Link to={`/products/${product.sku}`} key={product.sku}>
               <Product
                 sku={product.sku}
@@ -25,7 +26,7 @@ export function ProductsList({ products, productsFiltered }: ProductsProps) {
             </Link>
           ))
           : // eslint-disable-next-line radar/no-identical-functions
-          products.map((product) => (
+          products.map((product: ProductType) => (
             <Link to={`/products/${product.sku}`} key={product.sku}>
               <Product
                 sku={product.sku}

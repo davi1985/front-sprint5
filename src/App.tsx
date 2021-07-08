@@ -11,7 +11,7 @@ import { Footer } from './components/Footer';
 import { NotFound } from './pages/NotFound';
 import { CategoriesProvider } from './contexts/CategoriesContext';
 
-export function App() {
+export function App(): JSX.Element {
   return (
     <AlertProvider>
       <LoadingProvider>

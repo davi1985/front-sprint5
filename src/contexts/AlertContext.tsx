@@ -1,14 +1,9 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, useState } from 'react';
 
-type AlertProviderProps = {
-  children: ReactNode;
-};
-
-type AlertContextData = {
-  message: string;
-  success: boolean;
-  alert: (messaAlert: string, successType: boolean) => void;
-};
+import {
+  AlertContextData,
+  AlertProviderProps,
+} from '../@types/contexts/AlertContext';
 
 export const AlertContext = createContext<AlertContextData>(
   {} as AlertContextData,

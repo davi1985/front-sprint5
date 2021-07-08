@@ -1,37 +1,20 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
+import { Breadcrumb } from '../@types/components/Breadcrumb';
+import { MenuItemType, MenuType } from '../@types/components/Menu';
+import {
+  CategoriesContextData,
+  CategoriesProviderProps,
+} from '../@types/contexts/CategoriesContext';
 import { useAlert } from '../hooks/useAlert';
 import { useLoading } from '../hooks/useLoading';
 import { fetchData } from '../service/ServiceUtils';
 
-type CategoriesProviderProps = {
-  children: ReactNode;
-};
-
-type CategoriesContextData = {
-  menuItems: Array<Menu>;
-  breadcrumbs: Array<Breadcrumb>;
-  alert: (messaAlert: string, successType: boolean) => void;
-};
-
-type Menu = {
-  id: number;
-  label: string;
-  link: string;
-};
-
-type Breadcrumb = {
-  id: number;
-  label: string;
-  link: string;
-  active: boolean;
-};
-
 export const CategoriesContext = createContext({} as CategoriesContextData);
 
 export function CategoriesProvider({ children }: CategoriesProviderProps) {
-  const [menuItems, setMenuItems] = useState<Array<Menu>>([]);
-  const [breadcrumbs, setBreadcrumbs] = useState<Array<Breadcrumb>>([
+  const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
+  const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumb[]>([
     {} as Breadcrumb,
   ]);
 

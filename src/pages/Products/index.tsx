@@ -23,7 +23,7 @@ const override = css`
   z-index: 1;
 `;
 
-export function Products() {
+export function Products(): JSX.Element {
   const { productsFiltered } = useFilter();
   const { products, filters } = useProducts();
 

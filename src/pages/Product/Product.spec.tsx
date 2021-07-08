@@ -2,18 +2,21 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router-dom';
 
 import { Product } from '.';
 
 describe('Product Page component', () => {
   it('should render correctly', () => {
-    render(
-      <MemoryRouter initiaValue="/products/1">
-        <Product />
-      </MemoryRouter>,
-    );
+    const history = createMemoryHistory();
+    history.push('/products/1');
 
+    render(
+      <Router history={history}>
+        <Product />
+      </Router>,
+    );
     expect(screen.getByText('Adicionar à sacola')).toBeInTheDocument();
   });
 });

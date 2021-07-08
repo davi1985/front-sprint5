@@ -5,7 +5,7 @@ type MenuItemProps = {
   link: string;
 };
 
-export function MenuItem({ label, link }: MenuItemProps) {
+export function MenuItem({ label, link }: MenuItemProps): JSX.Element {
   return (
     <Item>
       <a className="menu__link" href={link}>

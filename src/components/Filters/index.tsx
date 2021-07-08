@@ -1,10 +1,6 @@
+import { Filter } from '../../@types/components/Filter';
 import { FilterItem } from '../FilterItem';
 import { Container, List } from './styles';
-
-type Filter = {
-  id: string;
-  label: string;
-};
 
 type FiltersProps = {
   filters: Array<Filter>;

@@ -11,7 +11,11 @@ type FilterItemProps = {
 
 export function FilterItem({ label, id }: FilterItemProps) {
   const [active, setActive] = useState(false);
-  const { handleSortByName, handleSortByPrice } = useProducts();
+  const {
+    handleSortByName,
+    handleSortByPrice,
+    handleSortBySize,
+  } = useProducts();
 
   // eslint-disable-next-line consistent-return
   function sortProducts(value: string): void {
@@ -23,6 +27,11 @@ export function FilterItem({ label, id }: FilterItemProps) {
     if (value === 'price') {
       setActive(true);
       return handleSortByPrice();
+    }
+
+    if (value === 'size') {
+      setActive(true);
+      return handleSortBySize();
     }
   }
 

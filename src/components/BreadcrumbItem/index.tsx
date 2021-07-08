@@ -1,13 +1,13 @@
 import { Item } from './styles';
 
-export type Breadcrumb = {
-  id?: number;
+type BreadcrumbItemProps = {
+  // id?: number;
   label: string;
   link: string;
   active: boolean;
 };
 
-export function BreadcrumbItem({ label, link, active }: Breadcrumb) {
+export function BreadcrumbItem({ label, link, active }: BreadcrumbItemProps) {
   return (
     <Item
       className={

@@ -1,17 +1,11 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, useState } from 'react';
 
-import { ProductType } from '../components/Product';
+import { ProductType } from '../@types/components/Product';
+import {
+  FilterContextData,
+  FilterProviderProps,
+} from '../@types/contexts/FilterContext';
 import { useProducts } from '../hooks/useProducts';
-
-type FilterContextData = {
-  searchProduct: string;
-  setSeachProduct: (string: string) => void;
-  productsFiltered: Array<ProductType>;
-};
-
-type FilterProviderProps = {
-  children: ReactNode;
-};
 
 export const FilterContext = createContext<FilterContextData>(
   {} as FilterContextData,
